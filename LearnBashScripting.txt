@@ -1,0 +1,54 @@
+Terminal
+ThreeLines > New Terminal	(or Ctrl+Shift+’)
+
+
+Echo hello terminal 		this just prints out words
+echo text >> filename		prints those words to a file
+
+Pwd - print working directory
+Ls - lists out whats here
+Cd - change directory
+Cd “fr” + tab - will change directory and auto populate what you started typing
+
+Cd .. or cd ../ will bring you back up a folder
+Cd ../.. will bring you back up two folders
+
+More <filename> or more myfile.json - prints out 
+
+Clear clears the terminal
+
+Flag commands like -l
+-l long list format
+–help to show what commands do
+
+Mkdir <name>			-make directory
+Mkdir <folder/name>		-make directory in subfolder
+
+Rmdir <dir_name>	remove folder
+Rm			remove file
+Rm -r <name> 	remove directory and contents recursivley
+
+
+
+Touch <filename> to create new file
+.jpeg
+.png
+.png
+.html
+.gitignore		for github?
+.font			roboto, lato, menlo
+
+cp <file> <destination>	copy 
+cp background.jpg images
+
+Mv	rename or move
+mv <filename> <new_filename>
+mv <filename> <location or folder>
+mv <filename> <folder/folder>
+mv <./images/footer.jpeg> <client/assets/images/>
+
+
+Find	find things or a file tree, can list everything in sub folders
+Find -name <filename>	find file name or folder name
+
+
