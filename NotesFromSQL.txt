@@ -1,0 +1,123 @@
+psql --username=freecodecamp --dbname=postgres
+To log in
+
+CREATE DATABASE first_database;		to create data base
+CREATE TABLE table_name();		to create relations/tables
+CREATE TABLE table_name(column_name DATATYPE CONSTRAINTS);
+	Constraints PRIMARY KEY
+
+ALTER TABLE table_name ADD COLUMN column_name DATATYPE;
+ALTER TABLE table_name ADD COLUMN column_name DATATYPE NOT NULL;
+	To add column
+	Can add NOT NULL to the end so its not null
+
+DATATYPE
+		INT
+		VARCHAR(int maxlength)
+		SERIAL			int but not NULL (will increment for you)
+		DATE
+		NUMERIC(4,1)		4 digits. One decimal xxx.x
+		UNIQUE provide unique entry (constraint
+ALTER TABLE table_name DROP COLUMN column_name;
+	To Remove column
+ALTER TABLE table_name RENAME COLUMN column_name TO new_name;
+	To Rename
+ALTER DATABASE database_name RENAME TO new_database_name;
+	To Rename DB
+ALTER TABLE table_name ADD PRIMARY KEY(column_name);
+To add a column with a unique key
+Set primary key on everytable, only one per table
+ALTER TABLE table_name ADD PRIMARY KEY(column1, column2);
+	To add two primary keys
+ALTER TABLE table_name ADD FOREIGN KEY(column_name) REFERENCES referenced_table(referenced_column);
+	Existing column as a foreign key
+ALTER TABLE table_name DROP CONSTRAINT constraint_name;
+To drop constraint such as keytable
+ALTER TABLE table_name ADD COLUMN column_name DATATYPE REFERENCES referenced_table_name(referenced_column_name);
+	To know what row is for a character, you need to set a foreign key so you can relate 
+	rows from this table to rows from your characters table
+	
+Example:
+	ALTER TABLE more_info ADD COLUMN character_id INT REFERENCES 
+	characters(character_id);
+
+ALTER TABLE table_name ADD UNIQUE(column_name);
+	Unique constraint to foreign key (maybe the values here cant be duplicates?)
+ALTER TABLE table_name ALTER COLUMN column_name SET NOT NULL;
+	Set to not null
+ALTER TABLE table_name ADD COLUMN column_name DATATYPE CONSTRAINT REFERENCES referenced_table_name(referenced_column_name);
+	One-too-many relation. Onecharacter will have many sounds
+
+
+
+INSERT INTO table_name(column_1, column_2) VALUES(value1, value2);
+	To add Rows in table
+	Ex INSERT INTO second_table(id,username) VALUES(2,'Mario');
+INSERT INTO characters(name, homeland, favorite_color)
+VALUES('Mario', 'Mushroom Kingdom', 'Red'),
+('Luigi', 'Mushroom Kingdom', 'Green'),
+('Peach', 'Mushroom Kingdom', 'Pink');
+	To do multiple
+
+SELECT columns,col2 FROM table_name;
+	View data in table
+SELECT columns FROM table_name ORDER BY column_name;
+To Reorder Table
+SELECT * FROM characters ORDER BY character_id;
+SELECT columns FROM table_name WHERE condition;
+	Find just the row of search
+SELECT columns FROM table_1 FULL JOIN table_2 ON table_1.primary_key_column = table_2.foreign_key_column;
+	Get Data from two tables using this command
+	example
+	SELECT * FROM characters FULL JOIN more_info ON characters.character_id = more_info.character_id;
+
+SELECT columns FROM junction_table
+FULL JOIN table_1 ON junction_table.foreign_key_column = table_1.primary_key_column
+FULL JOIN table_2 ON junction_table.foreign_key_column = table_2.primary_key_column;
+	Example
+	Character_Actions links the two
+	SELECT * FROM character_actions
+FULL JOIN characters ON character_actions.character_id = characters.character_id
+FULL JOIN actions ON character_actions.action_id = actions.action_id;
+
+	
+
+DELETE FROM table_name WHERE condition;
+	To Delete from table
+	Condition could be username=’name’
+
+DROP TABLE table_name;
+	To delete table from database
+DROP DATABASE database_name;
+	To delete database
+
+UPDATE table_name SET column_name=new_value WHERE condition;
+To fix mistakes / change values
+UPDATE characters SET favorite_color='Orange' WHERE name='Daisy';
+
+
+*						to list all
+
+\l 						to list databases
+
+\c <name> 					to enter database
+
+\d						to display data
+\d table_name					details from data in that table
+
+
+
+
+
+Instructions
+For this project, you need to log in to PostgreSQL with psql to create your database. Do that by entering psql --username=freecodecamp --dbname=postgres in the terminal. Make all the tests below pass to complete the project. Be sure to get creative, and have fun!
+
+Don't forget to connect to your database after you create it 😄
+
+Here's some ideas for other column and table names: description, has_life, is_spherical, age_in_millions_of_years, planet_types, galaxy_types, distance_from_earth.
+
+Notes:
+If you leave your virtual machine, your database may not be saved. You can make a dump of it by entering pg_dump -cC --inserts -U freecodecamp universe > universe.sql in a bash terminal (not the psql one). It will save the commands to rebuild your database in universe.sql. The file will be located where the command was entered. If it's anything inside the project folder, the file will be saved in the VM. You can rebuild the database by entering psql -U postgres < universe.sql in a terminal where the .sql file is.
+
+If you are saving your progress on freeCodeCamp.org, after getting all the tests to pass, follow the instructions above to save a dump of your database. Save the universe.sql file in a public repository and submit the URL to it on freeCodeCamp.org.
+
