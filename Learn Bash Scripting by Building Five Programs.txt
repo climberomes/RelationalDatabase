@@ -1,0 +1,124 @@
+Echo hello ‘’
+Touch questionnaire.sh		creates file
+
+sh questionnaire.sh			shell command run the program with that line
+bash questionnaire.sh			bash command run the program with that line
+
+Sh uses the shell interpreter
+Bash uses the bourne-again shell
+
+Which bash				command to find out where the bash interpreter is located
+
+That's the absolute path to the bash interpreter. You can tell your program to use it by placing a shebang at the very top of the file like this: #!<path_to_interpreter>. Add a shebang at the very top of your file, the one you want looks like this: #!/bin/bash.
+
+Execute your script with ./questionnaire.sh
+	Permission denied
+
+./countdown.sh arg1 arg2 arg3	3 arguments to pass in
+
+ls -l					to see permissions of file
+Next to your file is -rw-r--r--. All but the first character (-) describe permissions different users have with the file. r means read, w means write, x means execute. I don't see an x anywhere, so nobody can execute it. Enter chmod +x questionnaire.sh in the terminal to give everyone executable permissions.
+chmod +x file_name.sh 		to add extension +x
+
+Help					to get all the built-in commands
+Help command				to get help, command from help works
+–help 					to get help on something in bash command
+Help test
+
+man<command>			manual for command
+-e 					enables interpreter for back slash \
+\n					new line
+
+VARIABLE_NAME=VALUE		No Spaces around Equal Sign or else it becomes a string
+
+$VARIABLE_NAME			to use that variable
+
+Echo $VARIABLE_NAME		prints out
+Read VARIABLE_NAME		accepts input
+
+Ctrl+c					bash command to exit out
+
+Echo $*				prints all arguments
+echo $@				also prints all
+echo ${ARR[@]}
+Echo $1				prints first argument
+echo $?				Prints last exit status
+
+[[ 4 -ge 5 ]]; echo $?			Print two commands one line
+
+If else syntax
+if [[ CONDITION ]]
+then
+  STATEMENTS
+else
+  STATEMENTS
+Fi
+
+-eq (equal), -ne (not equal), -lt (less than), -le (less than or equal), -gt (greater than), -ge (greater than or equal)
+
+
+
+[[ -x countdown.sh && 5 -le 4 ]]; echo $?
+[[ -x countdown.sh || 5 -le 4 ]]; echo $?
+	test the file is executable by you and five is less than or equal to four
+
+
+For loop syntax
+for (( i = 10; i > 0; i-- ))
+do
+  echo $i
+Done
+
+
+ls /bin				bin stands for binary
+Sleep command in there
+
+Sleep 3
+
+Printenv			with environment variables
+
+echo $LANG
+View all variables in the shell with declare -p
+
+$RANDOM			random number 0 and 32767
+
+
+Enter help let in the terminal to see the operators you can use with the double parenthesis
+
+((I++))		does math does not return
+$((I++))	saves value
+
+declare -p
+	See all variables?
+
+Declare -p VAR_NAME
+
+
+Array
+ ARR=("a" "b" "c")
+echo ${ARR[1]}
+
+[[ hello == world ]]; echo $?
+	comparison
+
+[[ hello =~ el ]]; echo $?
+	Pattern match find
+
+[[ "hello world" =~ "lo wor" ]]; echo $?
+
+[[ "hello world" =~ ^h ]]; echo $?
+	Starts with h
+[[ "hello world" =~ ^h.+d$ ]]; echo $? 
+	e string starts with an h, has at least one character after it, and ends with a d
+[[ $VAR == "hello world" ]]; echo $?
+[[ $VAR =~ \?$ ]]; echo $?
+
+if [[ ! $1 ]]
+This condition will check if an argument is or isn't passed, this really was for the function call
+
+Type echo
+	Gets the type
+	echo is a shell builtin
+	if is a shell keyword
+
+
